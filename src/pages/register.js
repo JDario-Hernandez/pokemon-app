@@ -3,6 +3,7 @@ import { Container, Form, Button, Card, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
+    const [user, setUser] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -23,45 +24,57 @@ function Register() {
     };
 
     return (
-        <Container className="d-flex justify-content-center align-items-center vh-100">
+        <Container className="d-flex flex-column justify-content-center align-items-center vh-100">
+            <img
+                src="/images/pokemon.png"
+                alt="Login Image"
+                className="img-fluid mb-4"
+                style={{ maxWidth: '600px' }}
+            />
             <Card style={{ width: "24rem" }} className="p-4 shadow">
-                <h2 className="text-center">Registro</h2>
                 {error && <Alert variant="danger">{error}</Alert>}
                 <Form onSubmit={handleSubmit}>
-                    <Form.Group className="mb-3">
-                        <Form.Label>Correo Electrónico</Form.Label>
+                    <Form.Group className="mb-3 text-center">
+                        <Form.Label column="sm">Nombre de usuario</Form.Label>
                         <Form.Control
-                            type="email"
-                            placeholder="Ingrese su correo"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            type="text"
+                            value={user}
+                            onChange={(e) => setUser(e.target.value)}
                             required
                         />
                     </Form.Group>
 
-                    <Form.Group className="mb-3">
-                        <Form.Label>Contraseña</Form.Label>
+                    <Form.Group className="mb-3 text-center">
+                        <Form.Label column="sm">Correo</Form.Label>
+                        <Form.Control
+                            type="email"
+                            value={email}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            required
+                        />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3 text-center">
+                        <Form.Label column="sm">Contraseña</Form.Label>
                         <Form.Control
                             type="password"
-                            placeholder="Ingrese su contraseña"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
                         />
                     </Form.Group>
 
-                    <Form.Group className="mb-3">
-                        <Form.Label>Confirmar Contraseña</Form.Label>
+                    <Form.Group className="mb-3 text-center">
+                        <Form.Label column="sm">Confirmar Contraseña</Form.Label>
                         <Form.Control
                             type="password"
-                            placeholder="Repita su contraseña"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
                         />
                     </Form.Group>
 
-                    <Button variant="success" type="submit" className="w-100">
+                    <Button variant="warning" type="submit" className="w-100">
                         Registrarse
                     </Button>
                 </Form>

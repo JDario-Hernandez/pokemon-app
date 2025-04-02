@@ -1,9 +1,9 @@
-import { createContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import {createContext, useState, useEffect} from "react";
+import {useNavigate} from "react-router-dom";
 
 const AuthContext = createContext();
 
-export function AuthProvider({ children }) {
+export function AuthProvider({children}) {
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
 
@@ -15,15 +15,10 @@ export function AuthProvider({ children }) {
     }, []);
 
     const login = (email) => {
-        const newUser = { email, role: email === "admin@example.com" ? "admin" : "user" };
+        const newUser = {email, role: email === "admin@example.com" ? "admin" : "user"};
         setUser(newUser);
         localStorage.setItem("user", JSON.stringify(newUser));
-
-        if (newUser.role === "admin") {
-            navigate("/admin");
-        } else {
-            navigate("/dashboard");
-        }
+        navigate("/home");
     };
 
     const logout = () => {
@@ -33,7 +28,7 @@ export function AuthProvider({ children }) {
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{user, login, logout}}>
             {children}
         </AuthContext.Provider>
     );
