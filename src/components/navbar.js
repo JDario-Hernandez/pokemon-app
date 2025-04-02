@@ -6,16 +6,19 @@ function MyNavbar() {
     return (
         <Navbar bg="light" variant="light" expand="lg">
             <Container className="d-flex justify-content-between align-items-center">
+
                 <div className="d-flex align-items-center">
-                    <img
-                        src="/images/pokemon.png"
-                        alt="Logo"
-                        style={{ width: "100px", height: "40px" }}
-                        className="mr-2"
-                    />
+                    <Nav.Link className="m-auto" as={Link} to="/home">
+                        <img
+                            src="/images/pokemon.png"
+                            alt="Logo"
+                            style={{width: "100px", height: "40px"}}
+                            className="mr-2"
+                        />
+                    </Nav.Link>
                 </div>
 
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
                         <Nav.Link className="m-auto" as={Link} to="/personajes">Personajes</Nav.Link>
@@ -30,7 +33,8 @@ function MyNavbar() {
                 </Navbar.Collapse>
             </Container>
         </Navbar>
-    );
+    )
+        ;
 }
 
 export default MyNavbar;
