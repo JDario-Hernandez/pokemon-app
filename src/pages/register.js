@@ -35,7 +35,7 @@ function Register() {
                 {error && <Alert variant="danger">{error}</Alert>}
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3 text-center">
-                        <Form.Label column="sm">Nombre de usuario</Form.Label>
+                        <Form.Label column="lg">Nombre de usuario</Form.Label>
                         <Form.Control
                             type="text"
                             value={user}
@@ -45,17 +45,17 @@ function Register() {
                     </Form.Group>
 
                     <Form.Group className="mb-3 text-center">
-                        <Form.Label column="sm">Correo</Form.Label>
+                        <Form.Label column="lg">Correo</Form.Label>
                         <Form.Control
                             type="email"
                             value={email}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            onChange={(e) => setEmail(e.target.value)}
                             required
                         />
                     </Form.Group>
 
                     <Form.Group className="mb-3 text-center">
-                        <Form.Label column="sm">Contraseña</Form.Label>
+                        <Form.Label column="lg">Contraseña</Form.Label>
                         <Form.Control
                             type="password"
                             value={password}
@@ -65,7 +65,7 @@ function Register() {
                     </Form.Group>
 
                     <Form.Group className="mb-3 text-center">
-                        <Form.Label column="sm">Confirmar Contraseña</Form.Label>
+                        <Form.Label column="lg">Confirmar Contraseña</Form.Label>
                         <Form.Control
                             type="password"
                             value={confirmPassword}
