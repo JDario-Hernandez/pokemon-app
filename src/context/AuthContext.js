@@ -15,7 +15,7 @@ export function AuthProvider({children}) {
     }, []);
 
     const login = (email) => {
-        const newUser = {email, role: email.contains("admin") ? "admin" : "user"};
+        const newUser = {email, role: email.includes("admin") ? "admin" : "user"};
         setUser(newUser);
         localStorage.setItem("user", JSON.stringify(newUser));
         navigate("/home");
