@@ -2,7 +2,7 @@ import React from "react";
 
 function Video() {
     return (
-        <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
+        <div className="d-flex justify-content-center align-items-center" style={{ marginTop:"100px" }}>
             <iframe
                 width="1020"
                 height="630"
