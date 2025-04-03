@@ -51,7 +51,7 @@ function Personajes() {
                         abilities: details.abilities.map(a => a.ability.name).join(", "),
                         weight: details.weight / 10,
                         height: details.height / 10,
-                        baseExperience: details.base_experience
+                        baseExperience: details.base_experience,
                     };
                 })
             );
@@ -81,6 +81,7 @@ function Personajes() {
         return () => observerInstance.disconnect();
     }, [fetchPokemons]);
 
+
     return (
         <Container>
             <Row className="mt-4">
@@ -91,7 +92,7 @@ function Personajes() {
                     return (
                         <Col key={index} md={4} sm={6} xs={12} className="mb-4 d-flex justify-content-center">
                             <div className="pokemon-card" style={{ backgroundColor }}>
-                                {/* Frontal */}
+                                {/* Card Frontal */}
                                 <div className="card-front">
                                     <Card className="shadow-lg rounded pokemon-tcg-card">
                                         <Card.Img variant="top" src={pokemon.image} alt={pokemon.name} />
@@ -104,7 +105,7 @@ function Personajes() {
                                     </Card>
                                 </div>
 
-                                {/* Trasera */}
+                                {/*Card Trasera */}
                                 <div className="card-back">
                                     <Card className="shadow-lg rounded pokemon-tcg-card">
                                         <Card.Img variant="top" src={pokemon.shiny} alt={pokemon.name + " Shiny"} />

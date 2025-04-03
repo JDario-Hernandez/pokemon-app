@@ -6,7 +6,7 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import {AuthProvider} from "./context/AuthContext";
-import Home from "./pages/home";
+import Home from "./pages/home/home";
 
 function App() {
 

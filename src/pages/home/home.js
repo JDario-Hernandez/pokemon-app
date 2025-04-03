@@ -2,7 +2,7 @@ import React from "react";
 import {Routes, Route, Navigate} from "react-router-dom";
 
 
-import MyNavbar from "../components/navbar";
+import MyNavbar from "../../components/navbar";
 import Personajes from "./personajes";
 import Usuario from "./usuario";
 import Contact from "./contacto";
