@@ -36,7 +36,7 @@ function Personajes() {
 
         setLoading(true);
         try {
-            const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=10&offset=${offset}`);
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=21&offset=${offset}`);
             const data = await response.json();
 
             const pokemonDetails = await Promise.all(
@@ -52,12 +52,13 @@ function Personajes() {
                         weight: details.weight / 10,
                         height: details.height / 10,
                         baseExperience: details.base_experience,
+                        cry: `https://play.pokemonshowdown.com/audio/cries/${details.name}.mp3`,
                     };
                 })
             );
 
             setPokemons(prevPokemons => [...prevPokemons, ...pokemonDetails]);
-            setOffset(prevOffset => prevOffset + 20);
+            setOffset(prevOffset => prevOffset + 21);
         } catch (error) {
             console.error("Error al obtener los Pokémon:", error);
         } finally {
@@ -81,6 +82,21 @@ function Personajes() {
         return () => observerInstance.disconnect();
     }, [fetchPokemons]);
 
+    const playSound = (cry) => {
+        if (!cry) return; // Evita intentar reproducir un sonido nulo o vacío
+
+        const audio = new Audio(cry);
+        audio.volume = 0.5;
+
+        // Manejar error de carga del audio
+        audio.onerror = () => {
+            console.warn("No se pudo cargar el sonido:", cry);
+        };
+
+        audio.play().catch(error => {
+            console.warn("Error al reproducir el sonido:", error);
+        });
+    };
 
     return (
         <Container>
@@ -91,8 +107,8 @@ function Personajes() {
 
                     return (
                         <Col key={index} md={4} sm={6} xs={12} className="mb-4 d-flex justify-content-center">
-                            <div className="pokemon-card" style={{ backgroundColor }}>
-                                {/* Card Frontal */}
+                            <div className="pokemon-card" style={{ backgroundColor }}  onMouseEnter={() => playSound(pokemon.cry)}>
+                                {/*Card Frontal */}
                                 <div className="card-front">
                                     <Card className="shadow-lg rounded pokemon-tcg-card">
                                         <Card.Img variant="top" src={pokemon.image} alt={pokemon.name} />
