@@ -14,38 +14,42 @@ function Login() {
     };
 
     return (
-        <Container className="d-flex justify-content-center align-items-center vh-100">
+        <Container className="d-flex flex-column justify-content-center align-items-center vh-100">
+            <img
+                src="/images/pokemon.png"
+                alt="Login Image"
+                className="img-fluid mb-4"
+                style={{ maxWidth: '600px' }}
+            />
+
             <Card style={{ width: "22rem" }} className="p-4 shadow">
-                <h2 className="text-center">Iniciar Sesión</h2>
                 <Form onSubmit={handleSubmit}>
-                    <Form.Group className="mb-3">
-                        <Form.Label>Correo Electrónico</Form.Label>
+                    <Form.Group className="mb-3 text-center">
+                        <Form.Label column="lg">Nombre usuario</Form.Label>
                         <Form.Control
                             type="email"
-                            placeholder="Ingrese su correo"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
                         />
                     </Form.Group>
 
-                    <Form.Group className="mb-3">
-                        <Form.Label>Contraseña</Form.Label>
+                    <Form.Group className="mb-3 text-center">
+                        <Form.Label column="lg">Contraseña</Form.Label>
                         <Form.Control
                             type="password"
-                            placeholder="Ingrese su contraseña"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
                         />
                     </Form.Group>
 
-                    <Button variant="primary" type="submit" className="w-100">
+                    <Button variant="warning" type="submit" className="w-100">
                         Iniciar Sesión
                     </Button>
                 </Form>
                 <p className="text-center mt-3">
-                    ¿No tienes cuenta? <Link to="/register">Regístrate aquí</Link>
+                    <Link to="/register">Registrarse</Link>
                 </p>
             </Card>
         </Container>

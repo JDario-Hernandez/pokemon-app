@@ -1,12 +1,12 @@
 import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import {MemoryRouter, Route, Routes} from "react-router-dom";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import {AuthProvider} from "./context/AuthContext";
-import Dashboard from "./pages/dashboard";
-import Admin from "./pages/admin";
-import "bootstrap/dist/css/bootstrap.min.css";
+import Home from "./pages/home/home";
 
 function App() {
 
@@ -18,18 +18,10 @@ function App() {
                     <Route path="/login" element={<Login/>}/>
 
                     <Route
-                        path="/dashboard"
+                        path="/*"
                         element={
                             <ProtectedRoute>
-                                <Dashboard/>
-                            </ProtectedRoute>
-                        }
-                    />
-                    <Route
-                        path="/admin"
-                        element={
-                            <ProtectedRoute>
-                                <Admin/>
+                                <Home/>
                             </ProtectedRoute>
                         }
                     />
