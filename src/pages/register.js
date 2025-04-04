@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Form, Button, Card, Alert } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 function Register() {
     const [user, setUser] = useState("");
@@ -79,7 +79,7 @@ function Register() {
                     </Button>
                 </Form>
                 <p className="text-center mt-3">
-                    ¿Ya tienes cuenta? <a href="/login">Inicia sesión</a>
+                    ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
                 </p>
             </Card>
         </Container>
