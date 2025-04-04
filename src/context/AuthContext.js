@@ -64,6 +64,14 @@ export function AuthProvider({children}) {
         navigate("/home");
     };
 
+    const register = (email) => {
+        const newUser = {id: 10, nombre: "Pepito Perez", email, role: email.includes("admin") ? "admin" : "user", estado: "Activo", fechaCreacion: "2024-04-01"};
+        setUser(newUser);
+        users.push(newUser);
+        localStorage.setItem("user", JSON.stringify(newUser));
+        navigate("/login");
+    };
+
     const logout = () => {
         setUser(null);
         localStorage.removeItem("user");

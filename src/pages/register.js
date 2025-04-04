@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, {useContext, useState} from "react";
 import { Container, Form, Button, Card, Alert } from "react-bootstrap";
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 
 function Register() {
     const [user, setUser] = useState("");
@@ -8,7 +9,7 @@ function Register() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState(null);
-    const navigate = useNavigate();
+    const { register } = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -17,10 +18,7 @@ function Register() {
             setError("Las contraseñas no coinciden");
             return;
         }
-
-        localStorage.setItem("user", JSON.stringify({ email, role: "user" }));
-
-        navigate("/login");
+        register(email);
     };
 
     return (
